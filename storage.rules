@@ -1,0 +1,27 @@
+rules_version = '2';
+service firebase.storage {
+
+  match /b/{bucket}/o {
+
+
+    // Disallow all by default
+    match /{allPaths=**} {
+      allow read, write: if false
+    }
+
+    // Allow reading of the api json
+    match /api/{fileName} {
+      
+      allow read: if true;
+
+    }
+
+    match /mobile_app_images/{document=**} {
+
+    	allow read: if true;
+
+    }
+
+  }
+
+}
