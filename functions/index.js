@@ -7,6 +7,7 @@ const { source_files_to_json, source_path } = require( './modules/storage' )
 exports.source_files_to_json = functions.storage.object().onFinalize( ( file, context ) => {
 
 	// If this was not a mobile app file, do not update
+	console.log( JSON.stringify( file ) )
 	if( !file.name.includes( source_path ) ) {
 		console.log( `Updated file not a mobile file: `, JSON.stringify( file ) )
 		return false
